@@ -7,6 +7,8 @@ import { Container } from "semantic-ui-react";
 function PokemonPage() {
   const [pokemon, setPokemon] = useState([])
   const [search, setSearch] = useState("")
+  const [isChecked, setIsChecked] = useState(false)
+  const [sorted, setSorted] = useState(pokemon)
 
   const url = "http://localhost:3001/pokemon/"
 
@@ -55,6 +57,16 @@ function PokemonPage() {
         setPokemon(updatedPokemon)
       })
   }
+  const handleCheckClick = () => {
+    setIsChecked(isChecked => !isChecked)
+  }
+
+  let sortedPokemon
+  if(isChecked) {
+    sortedPokemon = allPokemon.sort((a, b) => (a.hp - b.hp))
+  } else {
+    sortedPokemon = allPokemon
+  }
 
   return (
     <Container>
@@ -62,11 +74,15 @@ function PokemonPage() {
       <br />
       <PokemonForm onPokemonSubmit={handleSubmit}/>
       <br />
-      <Search onSearch={handleSearch}/>
+      <Search 
+        onCheckClick={handleCheckClick}
+        onSearch={handleSearch}
+        isChecked={isChecked}
+      />
       <br />
       <PokemonCollection
         onDeleteClick={handleDeleteClick}
-        pokemon={allPokemon}
+        pokemon={sortedPokemon}
       />
     </Container>
   );

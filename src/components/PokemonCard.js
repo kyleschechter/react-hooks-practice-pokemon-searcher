@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { Card } from "semantic-ui-react";
+import { Card, Form } from "semantic-ui-react";
 
-function PokemonCard({ name, hp, spriteFront, spriteBack }) {
+function PokemonCard({ id, name, hp, spriteFront, spriteBack, onDeleteClick }) {
   const [image, setImage] = useState(true)
 
   const handleChangeImage = () => {
     setImage(!image)
   }
-  
+  const handleDeleteClick = () => {
+    onDeleteClick(id)
+  }
+
   return (
     <Card>
       <div>
@@ -22,6 +25,7 @@ function PokemonCard({ name, hp, spriteFront, spriteBack }) {
             <i className="icon heartbeat red" />
             {hp} hp
           </span>
+          <Form.Button onClick={handleDeleteClick}>Delete</Form.Button>
         </div>
       </div>
     </Card>

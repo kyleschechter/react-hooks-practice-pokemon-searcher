@@ -7,8 +7,10 @@ import { Container } from "semantic-ui-react";
 function PokemonPage() {
   const [pokemon, setPokemon] = useState([])
   const [search, setSearch] = useState("")
+  const [isChecked, setIsChecked] = useState(false)
+  const [sorted, setSorted] = useState(pokemon)
 
-  const url = "http://localhost:3001/pokemon"
+  const url = "http://localhost:3001/pokemon/"
 
   useEffect(() => {
     fetch(url)
@@ -45,6 +47,26 @@ function PokemonPage() {
     .then(r => r.json())
     .then(data => setPokemon([...pokemon, data]))
   }
+  const handleDeleteClick = (id) => {
+    const configObj = {
+      method: "DELETE"
+    }
+    fetch(`${url}${id}`, configObj)
+      .then(() => {
+        const updatedPokemon = pokemon.filter(poke => poke.id !== id)
+        setPokemon(updatedPokemon)
+      })
+  }
+  const handleCheckClick = () => {
+    setIsChecked(isChecked => !isChecked)
+  }
+
+  let sortedPokemon
+  if(isChecked) {
+    sortedPokemon = allPokemon.sort((a, b) => (b.hp - a.hp))
+  } else {
+    sortedPokemon = allPokemon
+  }
 
   return (
     <Container>
@@ -52,9 +74,16 @@ function PokemonPage() {
       <br />
       <PokemonForm onPokemonSubmit={handleSubmit}/>
       <br />
-      <Search onSearch={handleSearch}/>
+      <Search 
+        onCheckClick={handleCheckClick}
+        onSearch={handleSearch}
+        isChecked={isChecked}
+      />
       <br />
-      <PokemonCollection pokemon={allPokemon}/>
+      <PokemonCollection
+        onDeleteClick={handleDeleteClick}
+        pokemon={sortedPokemon}
+      />
     </Container>
   );
 }

@@ -8,7 +8,7 @@ function PokemonPage() {
   const [pokemon, setPokemon] = useState([])
   const [search, setSearch] = useState("")
 
-  const url = "http://localhost:3001/pokemon"
+  const url = "http://localhost:3001/pokemon/"
 
   useEffect(() => {
     fetch(url)
@@ -45,6 +45,16 @@ function PokemonPage() {
     .then(r => r.json())
     .then(data => setPokemon([...pokemon, data]))
   }
+  const handleDeleteClick = (id) => {
+    const configObj = {
+      method: "DELETE"
+    }
+    fetch(`${url}${id}`, configObj)
+      .then(() => {
+        const updatedPokemon = pokemon.filter(poke => poke.id !== id)
+        setPokemon(updatedPokemon)
+      })
+  }
 
   return (
     <Container>
@@ -54,7 +64,10 @@ function PokemonPage() {
       <br />
       <Search onSearch={handleSearch}/>
       <br />
-      <PokemonCollection pokemon={allPokemon}/>
+      <PokemonCollection
+        onDeleteClick={handleDeleteClick}
+        pokemon={allPokemon}
+      />
     </Container>
   );
 }

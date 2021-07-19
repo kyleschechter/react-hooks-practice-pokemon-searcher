@@ -82,15 +82,6 @@
       }
     },
     {
-      "id": 11,
-      "name": "metapod",
-      "hp": 50,
-      "sprites": {
-        "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png",
-        "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/11.png"
-      }
-    },
-    {
       "id": 12,
       "name": "butterfree",
       "hp": 60,
@@ -691,15 +682,6 @@
       "sprites": {
         "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png",
         "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/78.png"
-      }
-    },
-    {
-      "id": 79,
-      "name": "slowpoke",
-      "hp": 90,
-      "sprites": {
-        "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/79.png",
-        "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/79.png"
       }
     },
     {

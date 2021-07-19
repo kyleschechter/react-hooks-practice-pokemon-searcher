@@ -1340,6 +1340,15 @@
         "back": "https://pbs.twimg.com/media/CQv7mnvWcAA5gEj.jpg"
       },
       "id": 152
+    },
+    {
+      "name": "Nick Cage",
+      "hp": 420,
+      "sprites": {
+        "front": "https://theplaylist.net/wp-content/uploads/2019/06/Nic-Cage-Vampires-Kiss-750x400.jpg",
+        "back": "https://i.pinimg.com/originals/33/95/ff/3395ff27e0b626832beb4d0a72a0f918.jpg"
+      },
+      "id": 153
     }
   ]
 }

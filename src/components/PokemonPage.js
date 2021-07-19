@@ -63,7 +63,7 @@ function PokemonPage() {
 
   let sortedPokemon
   if(isChecked) {
-    sortedPokemon = allPokemon.sort((a, b) => (a.hp - b.hp))
+    sortedPokemon = allPokemon.sort((a, b) => (b.hp - a.hp))
   } else {
     sortedPokemon = allPokemon
   }

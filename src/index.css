@@ -21,3 +21,8 @@
 .App-intro {
   font-size: large;
 }
+
+img {
+  width: 96px;
+  height: auto;
+}
